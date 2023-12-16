@@ -1,9 +1,12 @@
 package com.sixtyninefourtwenty.kotlinjavacompat.coroutines
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.internal.resumeCancellableWith
 import java.util.function.Consumer
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 @Suppress("unused")
 class ContinuationCompat<in T> @JvmOverloads constructor(
@@ -34,4 +37,13 @@ class ContinuationCompat<in T> @JvmOverloads constructor(
             } else throw it
         }
     }
+
+    fun resumes(value: T) {
+        resume(value)
+    }
+
+    fun resumesWithException(exception: Throwable) {
+        resumeWithException(exception)
+    }
+
 }

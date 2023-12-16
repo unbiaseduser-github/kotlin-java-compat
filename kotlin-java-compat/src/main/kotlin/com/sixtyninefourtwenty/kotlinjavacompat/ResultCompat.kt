@@ -5,6 +5,7 @@ import java.util.function.Function
 import java.util.function.Supplier
 import kotlin.coroutines.Continuation
 
+@Suppress("unused")
 class ResultCompat<out T> private constructor(private val result: Result<T>) {
 
     fun getOrThrow() = result.getOrThrow()
